@@ -6,7 +6,7 @@
 package br.org.coletivoJava.integracoes.testes;
 
 import testes.spark.ServidorOauthRecepcaoSpark;
-import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktMauticIntegracao;
+import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupListas;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTokenGestao;
@@ -27,7 +27,7 @@ public class TesteUnitarioOauth {
 
     @Test
     public void testeMauticOauth() {
-        SBCore.configurar(new ConfiguradorCoremktMauticIntegracao(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
+        SBCore.configurar(new ConfiguradorCoremktClickupTestes(), SBCore.ESTADO_APP.DESENVOLVIMENTO);
 
         ItfTokenGestao oauth = FabIntRestClickupListas.LISTAS_DA_PASTA.getGestaoToken(SBCore.getUsuarioLogado());
         String url = oauth.getComoGestaoOauth().getUrlObterCodigoSolicitacao();
