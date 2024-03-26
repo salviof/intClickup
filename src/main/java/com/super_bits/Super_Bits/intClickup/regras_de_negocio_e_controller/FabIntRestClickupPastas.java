@@ -29,4 +29,22 @@ public enum FabIntRestClickupPastas implements ItfFabricaIntegracaoRest {
             parametrosGet = "space_id",
             adicionarAutenticacaoBearer = true)
     PASTAS_LISTAR,
+    //https://api.clickup.com/api/v2/space/{space_id}/folder
+    @InfoConsumoRestService(getPachServico = "/api/v2/space/{0}/folder?archived=false'", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.POST,
+            parametrosGet = "space_id",
+            adicionarAutenticacaoBearer = true)
+    PASTAS_CRIAR,
+    //https://api.clickup.com/api/v2/folder/{folder_id}
+    @InfoConsumoRestService(getPachServico = "/api/v2/folder/{0}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.DELETE,
+            parametrosGet = "folder_id",
+            adicionarAutenticacaoBearer = true)
+    PASTAS_REMOVER,
+    //'https://api.clickup.com/api/v2/folder/{folder_id}
+    @InfoConsumoRestService(getPachServico = "/api/v2/folder/{0}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.GET,
+            parametrosGet = "folder_id",
+            adicionarAutenticacaoBearer = true)
+    PASTAS_DETALHES,
 }

@@ -4,7 +4,6 @@
  */
 package br.org.coletivoJava.integracoes.restClickup.implementacao;
 
-import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupListas;
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupTimes;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
@@ -12,7 +11,6 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *

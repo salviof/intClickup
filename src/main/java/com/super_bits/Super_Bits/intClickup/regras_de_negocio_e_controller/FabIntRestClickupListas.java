@@ -36,12 +36,18 @@ public enum FabIntRestClickupListas implements ItfFabricaIntegracaoRest {
     LISTAS_DO_ESPACO,
     @InfoConsumoRestService(getPachServico = "/space/{space_id}/list", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
             tipoConexao = FabTipoConexaoRest.POST,
-            parametrosGet = "folder_id",
+            parametrosGet = "space_id",
             adicionarAutenticacaoBearer = true)
-    LISTA_CRIAR,
-    @InfoConsumoRestService(getPachServico = "api.clickup.com/api/v2/list/{list_id}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
-            tipoConexao = FabTipoConexaoRest.GET,
+    LISTA_CRIAR_NO_ESPACO,
+    @InfoConsumoRestService(getPachServico = "/api/v2/folder/{0}/list", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.POST,
             parametrosGet = "folder_id",
+            parametrosPost = {"name", "content"},
+            adicionarAutenticacaoBearer = true)
+    LISTA_CRIAR_NA_PASTA,
+    @InfoConsumoRestService(getPachServico = "/api/v2/list/{0}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.GET,
+            parametrosGet = "list_id",
             adicionarAutenticacaoBearer = true)
     LISTA_VER,
     @InfoConsumoRestService(getPachServico = "/api/v2/list/{list_id}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,

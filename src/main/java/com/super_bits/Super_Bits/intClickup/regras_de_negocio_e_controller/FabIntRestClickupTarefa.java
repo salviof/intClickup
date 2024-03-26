@@ -29,4 +29,20 @@ public enum FabIntRestClickupTarefa implements ItfFabricaIntegracaoRest {
             parametrosGet = "list_id",
             adicionarAutenticacaoBearer = true)
     TAREFA_LISTAR,
+    ///list/{list_id}/taskTemplate/{template_id}
+    @InfoConsumoRestService(getPachServico = "/api/v2/list/{0}/taskTemplate/{1}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.POST,
+            parametrosGet = {"list_id", "modelo_id"},
+            adicionarAutenticacaoBearer = true)
+    TAREFA_CRIAR_VIA_MODELO,
+    @InfoConsumoRestService(getPachServico = "/api/v2/task/{0}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.GET,
+            parametrosGet = "task_id",
+            adicionarAutenticacaoBearer = true)
+    TAREFA_VER,
+    @InfoConsumoRestService(getPachServico = "/api/v2/team/{0}/taskTemplate?page={1}", tipoInformacaoRecebida = FabTipoArquivoImportacao.JSON,
+            tipoConexao = FabTipoConexaoRest.GET,
+            parametrosGet = "team_id",
+            adicionarAutenticacaoBearer = true)
+    TAREFA_MODELO_LISTAR,
 }
