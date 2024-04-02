@@ -28,7 +28,7 @@ import org.junit.Test;
  *
  * @author salvio
  */
-public class TesteIntegracao {
+public class TesteIntegracaoClickup {
 
     private final String NOME_TIME = "Casanova Digital";
     private final String NOMEESPACO_MODELOS = "MODELOS";
@@ -102,9 +102,9 @@ public class TesteIntegracao {
         return null;
     }
 
-    public String getCodigoListaProjetoExecucao(String pCodigoPasta, String pModelo) {
+    public String getCodigoListaProjetoExecucao(String pCodigoPastaCliente, String pModelo) {
 
-        ItfRespostaWebServiceSimples resp = FabIntRestClickupPastas.PASTAS_DETALHES.getAcao(pCodigoPasta).getResposta();
+        ItfRespostaWebServiceSimples resp = FabIntRestClickupPastas.PASTAS_DETALHES.getAcao(pCodigoPastaCliente).getResposta();
         JsonObject respPastaJson = resp.getRespostaComoObjetoJson();
 
         Optional<JsonObject> listaServicosEmExecucao = respPastaJson.getJsonArray("lists").stream()
@@ -119,7 +119,7 @@ public class TesteIntegracao {
             String nomeModelo = FabIntRestClickupListas.LISTA_VER.getAcao(pModelo).getResposta().getRespostaComoObjetoJson().getString("name");
             nomeModelo = nomeModelo.substring(0, nomeModelo.indexOf("["));
             ItfRespostaWebServiceSimples respCriacaoLisaTarefasProjeto = FabIntRestClickupListas.LISTA_CRIAR_NA_PASTA
-                    .getAcao(pCodigoPasta,
+                    .getAcao(pCodigoPastaCliente,
                             nomeModelo + " [" + CODIGO_ORDEM_DE_SERVICO + "]",
                             "Ações programadas para " + nomeModelo).getResposta();
             if (!respCriacaoLisaTarefasProjeto.isSucesso()) {
