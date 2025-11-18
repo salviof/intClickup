@@ -15,7 +15,7 @@ import jakarta.json.JsonObject;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.TokenDeAcessoExternoSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.ChamadaHttpSimples;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 import java.util.Date;
 
 @InfoIntegracaoRestClickupListas(tipo = FabIntRestClickupListas.LISTAS_DA_PASTA)
@@ -51,7 +51,7 @@ public class GestaoTokenRestClickup extends GestaoTokenOath2 {
     }
 
     public GestaoTokenRestClickup(final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario) {
+            final ComoUsuario pUsuario) {
         super(FabIntRestClickupListas.class, pTipoAgente, pUsuario);
 
     }

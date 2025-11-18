@@ -4,7 +4,7 @@ import br.org.coletivoJava.integracoes.restClickup.api.InfoIntegracaoRestClickup
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupTarefa;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoComOauthAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestClickupTarefa(tipo = FabIntRestClickupTarefa.TAREFA_VER)
 public class IntegracaoRestClickupTarefaVer
@@ -13,7 +13,7 @@ public class IntegracaoRestClickupTarefaVer
 
 	public IntegracaoRestClickupTarefaVer(
 			final FabTipoAgenteClienteApi pTipoAgente,
-			final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+			final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
 		super(FabIntRestClickupTarefa.TAREFA_VER, pTipoAgente, pUsuario,
 				pParametro);
 	}

@@ -4,7 +4,7 @@ import br.org.coletivoJava.integracoes.restClickup.api.InfoIntegracaoRestClickup
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupListas;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoComOauthAbstrato;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 
 @InfoIntegracaoRestClickupListas(tipo = FabIntRestClickupListas.LISTA_CRIAR_NA_PASTA)
 public class IntegracaoRestClickupListaCriarNaPasta
@@ -13,7 +13,7 @@ public class IntegracaoRestClickupListaCriarNaPasta
 
     public IntegracaoRestClickupListaCriarNaPasta(
             final FabTipoAgenteClienteApi pTipoAgente,
-            final ItfUsuario pUsuario, final java.lang.Object... pParametro) {
+            final ComoUsuario pUsuario, final java.lang.Object... pParametro) {
         super(FabIntRestClickupListas.LISTA_CRIAR_NA_PASTA, pTipoAgente,
                 pUsuario, pParametro);
     }
