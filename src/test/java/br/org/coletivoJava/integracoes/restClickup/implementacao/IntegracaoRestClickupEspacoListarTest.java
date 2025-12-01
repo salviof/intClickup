@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restClickup.implementacao;
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupEspacos;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import java.util.Optional;
@@ -28,7 +28,7 @@ public class IntegracaoRestClickupEspacoListarTest {
                 .getAcao(time).getResposta();
         System.out.println(resposta.getRespostaTexto());
         JsonObject json = resposta.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(json));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(json));
         return json.getJsonArray("spaces").getJsonObject(0).getString("id");
     }
 
@@ -38,7 +38,7 @@ public class IntegracaoRestClickupEspacoListarTest {
                 .getAcao(time).getResposta();
         System.out.println(resposta.getRespostaTexto());
         JsonObject json = resposta.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(json));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(json));
         Optional<JsonObject> modeloEspaco = json.getJsonArray("spaces").stream().map(spc -> spc.asJsonObject())
                 .filter(spcJson -> spcJson.getString("name").equals("MODELOS")).findFirst();
         return modeloEspaco.get().getString("id");

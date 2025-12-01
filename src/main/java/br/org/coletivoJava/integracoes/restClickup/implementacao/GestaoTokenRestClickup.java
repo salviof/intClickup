@@ -5,8 +5,8 @@ import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIn
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabConfigModuloCLickup;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.arquivosConfiguracao.ConfigModulo;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringValidador;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringValidador;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.FabTipoConexaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.oauth.InfoTokenOauth2;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenOath2;
@@ -32,7 +32,7 @@ public class GestaoTokenRestClickup extends GestaoTokenOath2 {
     @Override
     protected void loadDadosIniciais() {
 
-        if (!UtilSBCoreStringValidador.isNuloOuEmbranco(getConfig().getPropriedade(FabConfigModuloCLickup.TOKEN_ACESSO_DIRETO))) {
+        if (!UtilCRCStringValidador.isNuloOuEmbranco(getConfig().getPropriedade(FabConfigModuloCLickup.TOKEN_ACESSO_DIRETO))) {
             conexaoDiretaViaToken = true;
         }
         if (!oth2Implementado) {
@@ -45,7 +45,7 @@ public class GestaoTokenRestClickup extends GestaoTokenOath2 {
     public ItfTokenDeAcessoExterno extrairToken(JsonObject jsonObject) {
         String token = getConfig().getPropriedade(FabConfigModuloCLickup.TOKEN_ACESSO_DIRETO);
         InfoTokenOauth2 tkObject = new InfoTokenOauth2(token);
-        tkObject.setDataHoraExpirarToken(UtilSBCoreDataHora.incrementaMes(new Date(), 24));
+        tkObject.setDataHoraExpirarToken(UtilCRCDataHora.incrementaMes(new Date(), 24));
         return tkObject;
 
     }
@@ -61,7 +61,7 @@ public class GestaoTokenRestClickup extends GestaoTokenOath2 {
         if (conexaoDiretaViaToken) {
             String token = getConfig().getPropriedade(FabConfigModuloCLickup.TOKEN_ACESSO_DIRETO);
             InfoTokenOauth2 tkObject = new InfoTokenOauth2(token);
-            tkObject.setDataHoraExpirarToken(UtilSBCoreDataHora.incrementaMes(new Date(), 24));
+            tkObject.setDataHoraExpirarToken(UtilCRCDataHora.incrementaMes(new Date(), 24));
             return tkObject;
         }
         if (!oth2Implementado) {

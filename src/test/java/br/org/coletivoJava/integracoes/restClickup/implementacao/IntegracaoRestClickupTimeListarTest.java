@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restClickup.implementacao;
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupTimes;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class IntegracaoRestClickupTimeListarTest {
         ItfRespostaWebServiceSimples resposta = FabIntRestClickupTimes.TIME_LISTAR.getAcao().getResposta();
         System.out.println(resposta.getRespostaTexto());
         JsonObject json = resposta.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(json));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(json));
         return json.getJsonArray("teams").getJsonObject(0).getString("id");
     }
 

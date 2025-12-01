@@ -8,7 +8,7 @@ import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIn
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupTimes;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import java.util.Optional;
@@ -38,7 +38,7 @@ public class IntegracaoRestClickupTarefaModeloListarTest {
         String codigoTime = getCodigoTime();
         ItfRespostaWebServiceSimples resp = FabIntRestClickupTarefa.TAREFA_MODELO_LISTAR.getAcao(codigoTime, "0").getResposta();
         JsonObject retornoJson = resp.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(retornoJson));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(retornoJson));
         System.out.println("eae?");
     }
 
@@ -46,7 +46,7 @@ public class IntegracaoRestClickupTarefaModeloListarTest {
         ItfRespostaWebServiceSimples resposta = FabIntRestClickupTimes.TIME_LISTAR.getAcao().getResposta();
         System.out.println(resposta.getRespostaTexto());
         JsonObject json = resposta.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(json));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(json));
 
         Optional<JsonObject> jsonNome = json.getJsonArray("teams").stream().map(time -> time.asJsonObject())
                 .filter(esp -> esp.getString("name").equals("Casanova Digital"))

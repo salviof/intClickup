@@ -11,8 +11,8 @@ import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIn
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupTimes;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringBuscaTrecho;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringBuscaTrecho;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.transmissao_recepcao_rest_client.ItfAcaoApiRest;
 import jakarta.json.JsonArray;
@@ -74,7 +74,7 @@ public class TesteIntegracaoClickup {
         JsonArray pastas = respPastasJson.getJsonArray("folders");
         for (JsonValue valuePasta : pastas) {
             JsonObject pasta = valuePasta.asJsonObject();
-            System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(pasta));
+            System.out.println(UtilCRCJson.getTextoByJsonObjeect(pasta));
         }
 
         Optional<String> psta = pastas.stream().map(pst -> pst.asJsonObject())
@@ -140,7 +140,7 @@ public class TesteIntegracaoClickup {
         ItfRespostaWebServiceSimples respostaTarefaDetalhe = FabIntRestClickupTarefa.TAREFA_VER.getAcao(pCodigoTarefaModelo).getResposta();
         JsonObject tarefaRespJson = respostaTarefaDetalhe.getRespostaComoObjetoJson();
         String nomeTarefa = tarefaRespJson.getString("name");
-        List<String> slugTarefas = UtilSBCoreStringBuscaTrecho.getPartesEntreColchete(nomeTarefa);
+        List<String> slugTarefas = UtilCRCStringBuscaTrecho.getPartesEntreColchete(nomeTarefa);
         String sluTipoTarefa = slugTarefas.get(0);
 
         if (listaDetalhes.containsKey("tasks")) {
@@ -193,7 +193,7 @@ public class TesteIntegracaoClickup {
         }
 
         String codigoTarefa = tarefaRespJson.getString("id");
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(tarefaRespJson));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(tarefaRespJson));
 
         ItfRespostaWebServiceSimples resp = FabIntRestClickupTarefa.TAREFA_CRIAR_VIA_MODELO.getAcao(pCodigoListaExecuxao, pCodigoTarefaModelo, "Nova Tarefa").getResposta();
         return resp.getRespostaComoObjetoJson().getString("id");
@@ -208,7 +208,7 @@ public class TesteIntegracaoClickup {
         ItfRespostaWebServiceSimples resposta = FabIntRestClickupTimes.TIME_LISTAR.getAcao().getResposta();
         System.out.println(resposta.getRespostaTexto());
         JsonObject json = resposta.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(json));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(json));
 
         Optional<JsonObject> jsonNome = json.getJsonArray("teams").stream().map(time -> time.asJsonObject())
                 .filter(esp -> esp.getString("name").equals(pNometIME))

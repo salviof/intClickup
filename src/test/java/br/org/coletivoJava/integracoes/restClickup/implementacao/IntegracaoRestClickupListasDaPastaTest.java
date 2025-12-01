@@ -7,7 +7,7 @@ package br.org.coletivoJava.integracoes.restClickup.implementacao;
 import com.super_bits.Super_Bits.intClickup.regras_de_negocio_e_controller.FabIntRestClickupPastas;
 import com.super_bits.Super_Bits.mktMauticIntegracao.configAppp.ConfiguradorCoremktClickupTestes;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.conexaoWebServiceClient.ItfRespostaWebServiceSimples;
 import jakarta.json.JsonObject;
 import org.junit.After;
@@ -31,7 +31,7 @@ public class IntegracaoRestClickupListasDaPastaTest {
         String codigoEspacao = integracaoEspacao.getCodigoEspacoModelo();
         ItfRespostaWebServiceSimples resp = FabIntRestClickupPastas.PASTAS_LISTAR.getAcao(codigoEspacao).getResposta();
         JsonObject respObj = resp.getRespostaComoObjetoJson();
-        System.out.println(UtilSBCoreJson.getTextoByJsonObjeect(respObj));
+        System.out.println(UtilCRCJson.getTextoByJsonObjeect(respObj));
         return null;
     }
 
